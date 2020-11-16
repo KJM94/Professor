@@ -1,0 +1,33 @@
+-- create database ProfessorEvaluation;
+
+-- use ProfessorEvaluation;
+
+/* create table evaluation(
+	evaluationID int primary key auto_increment, #평가 번호
+    userID varchar(50), #작성자아이디
+    professorName varchar(50), #교수명
+    lectureYear int, #수강연도
+    semesterDivide varchar(20), #수강학기
+    evaluationContent varchar(2048), #평가내용
+    Score varchar(10), #평가점수
+    likeCount int #추천갯수
+);
+ */
+ 
+/*
+create table user (
+  userID varchar(50), #작성자아이디
+  userPassword varchar(50), #작성자비밀번호
+  userEmail varchar(50), #작성자이메일
+  userEmailHash varchar(64), #이메일확인 해시값
+  userEmailChecked boolean #이메일확인 여부
+);
+*/
+
+/*
+create table likey(
+	userID varchar(50), #작성자아이디
+    evaluationID int, #평가번호
+    userIP varchar(50) #작성자 아이피
+);
+*/
