@@ -28,9 +28,7 @@
             	  회원 관리
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdown">
-              <a class="dropdown-item" href="#">로그인</a>
-              <a class="dropdown-item" href="#">회원가입</a>
-              <a class="dropdown-item" href="#">로그아웃</a>
+              <a class="dropdown-item" href="userLogin.jsp">로그인</a>
             </div>
           </li>
         </ul>
@@ -40,6 +38,13 @@
         </form>
       </div>
     </nav>
+    
+    <div class="container">
+    	<div class="alert alert-success mt-4" role="alert">
+    		이메일 인증 메일이 전송되었습니다. 확인해주세요.
+    	</div>
+    
+    </div>
     
         <div class="container">
       <form method="get" action="./index.jsp" class="form-inline mt-3">
