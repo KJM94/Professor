@@ -42,8 +42,8 @@
 	}
 	
 	// 사용자에게 보낼 메시지
-	String host = "http://localhost:8080/ProfessorEvaluation/";
-	String from = "이메일 아이디";
+	String host = "http://localhost:8080/Professor_Evaluation/";
+	String from = "testkjmin@gmail.com";
 	String to = userDAO.getUserEmail(userID);
 	String subject = "평가를 위한 확인 이메일입니다.";
 	String content = "다음 링크에 접속하여 지시대로 진행하세요." +
@@ -89,9 +89,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>교수 평가</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- 부트스트랩 CSS -->
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<!-- 커스텀 CSS -->
+<link rel="stylesheet" href="./css/custom.css">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.jsp">교수평가</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.jsp">메인</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
+              회원 관리
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdown">
+              <a class="dropdown-item" href="userLogin.jsp">로그인</a>
+            </div>
+          </li>
+        </ul>
+        <form action="./index.jsp" method="get" class="form-inline my-2 my-lg-0">
+          <input type="text" name="search" class="form-control mr-sm-2" placeholder="내용을 입력하세요.">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+        </form>
+      </div>
+    </nav>
+	<div class="container">
+	    <div class="alert alert-success mt-4" role="alert">
+		  이메일 주소 인증 메일이 전송되었습니다. 이메일에 들어가셔서 인증해주세요.
+		</div>
+    </div>
+    <footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">
+      Copyright ⓒ 2020 권정민 All Rights Reserved.
+    </footer>
 
+		<!-- jquery js 추가 -->
+		<script src="./js/jquery-3.5.1.min.js"></script>
+		
+		<!-- popper js 추가 -->
+		<script src="./js/popper.min.js"></script>
+		
+		<!-- bootstrap js 추가 -->
+		<script src="./js/bootstrap.min.js"></script>
 </body>
 </html>

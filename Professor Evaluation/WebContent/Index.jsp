@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="user.UserDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +14,32 @@
 <link rel="stylesheet" href="./css/custom.css">
 </head>
 <body>
+<%
+	String userID = null;
+	if(session.getAttribute("userID") != null) {
+		userID = (String) session.getAttribute("userID");
+	}
+
+	if(userID == null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('로그인을 해주세요.');");
+		script.println("location.href = 'userLogin.jsp'");
+		script.println("</script>");
+		script.close();	
+	}
+	
+	boolean emailChecked = new UserDAO().getUserEmailChecked(userID);
+
+	if(emailChecked == false) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("location.href = 'emailSendConfirm.jsp'");
+		script.println("</script>");
+		script.close();		
+		return;
+	}
+%>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
       <a class="navbar-brand" href="Index.jsp">교수평가</a>
@@ -28,8 +56,19 @@
             	  회원 관리
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdown">
+<%
+	if(userID == null){
+%>
               <a class="dropdown-item" href="userLogin.jsp">로그인</a>
-            </div>
+              <a class="dropdown-item" href="userRegister.jsp">회원가입</a>
+<%
+	} else{
+%>
+			  <a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
+<%
+	}
+%>
+     </div>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -38,14 +77,6 @@
         </form>
       </div>
     </nav>
-    
-    <div class="container">
-    	<div class="alert alert-success mt-4" role="alert">
-    		이메일 인증 메일이 전송되었습니다. 확인해주세요.
-    	</div>
-    
-    </div>
-    
         <div class="container">
       <form method="get" action="./index.jsp" class="form-inline mt-3">
         <select name="lectureDivide" class="form-control mx-1 mt-2">
@@ -232,7 +263,7 @@
 
     
 		<!-- jquery js 추가 -->
-		<script src="./js/jquery.min.js"></script>
+		<script src="./js/jquery-3.5.1.min.js"></script>
 		
 		<!-- popper js 추가 -->
 		<script src="./js/popper.min.js"></script>
