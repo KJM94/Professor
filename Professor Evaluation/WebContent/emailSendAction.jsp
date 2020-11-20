@@ -54,9 +54,9 @@
 	p.put("mail.smtp.user", from);
 	p.put("mail.smtp.host", "smtp.googlemail.com");
 	p.put("mail.smtp.port", "465");
-	p.put("mail.smtp.starttls.enable", "ture");
-	p.put("mail.smtp.auth", "ture");
-	p.put("mail.smtp.debug", "ture");
+	p.put("mail.smtp.starttls.enable", "true");
+	p.put("mail.smtp.auth", "true");
+	p.put("mail.smtp.debug", "true");
 	p.put("mail.smtp.socketFactory.port", "465");
 	p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 	p.put("mail.smtp.socketFactory.fallback", "false");
