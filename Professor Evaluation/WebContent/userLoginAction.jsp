@@ -22,7 +22,7 @@
 		session.setAttribute("userID", userID);
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href='index.jsp'");
+		script.println("location.href='Index.jsp'");
 		script.println("</script>");
 		script.close();
 	} else if(result == 0){

@@ -5,7 +5,7 @@
 	session.invalidate();
 %>
 <script>
-	location.href='index.jsp';
+	location.href='Index.jsp';
 </script>
 <!DOCTYPE html>
 <html>
