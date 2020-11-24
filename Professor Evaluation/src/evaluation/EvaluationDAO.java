@@ -26,14 +26,14 @@ public class EvaluationDAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			String SQL = "INSERT INTO EVALUATION VALUES (NULL, ?, ?, ?, ? ,? ,? ,? ,0);";
+			String SQL = "INSERT INTO EVALUATION VALUES (NULL, ?, ?, ?, ? ,? ,? ,0);";
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, evaluationDTO.getUserID());
 			pstmt.setString(2, evaluationDTO.getProfessorName());
-			pstmt.setInt(4, evaluationDTO.getLectureYear());
-			pstmt.setString(5, evaluationDTO.getSemesterDivide());
-			pstmt.setString(6, evaluationDTO.getEvaluationContent());
-			pstmt.setString(7, evaluationDTO.getScore());
+			pstmt.setInt(3, evaluationDTO.getLectureYear());
+			pstmt.setString(4, evaluationDTO.getSemesterDivide());
+			pstmt.setString(5, evaluationDTO.getEvaluationContent());
+			pstmt.setString(6, evaluationDTO.getScore());
 			return pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

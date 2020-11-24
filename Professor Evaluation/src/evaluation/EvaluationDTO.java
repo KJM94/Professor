@@ -50,7 +50,7 @@ public class EvaluationDTO {
 		return Score;
 	}
 	public void setScore(String score) {
-		Score = score;
+		this.Score = score;
 	}
 	public int getLikeCount() {
 		return likeCount;
@@ -58,6 +58,7 @@ public class EvaluationDTO {
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
 	}
+	
 	public EvaluationDTO(int evaluationID, String userID, String professorName, int lectureYear, String semesterDivide,
 			String evaluationContent, String score, int likeCount) {
 		super();
@@ -67,7 +68,7 @@ public class EvaluationDTO {
 		this.lectureYear = lectureYear;
 		this.semesterDivide = semesterDivide;
 		this.evaluationContent = evaluationContent;
-		Score = score;
+		this.Score = score;
 		this.likeCount = likeCount;
 	}
 
