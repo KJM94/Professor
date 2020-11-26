@@ -26,6 +26,7 @@
 	String semesterDivide = null;
 	String evaluationContent = null;
 	String Score = null;
+	String lectureDivide = null;
 	
 	if(request.getParameter("professorName") != null){
 		professorName = (String) request.getParameter("professorName");
@@ -46,9 +47,12 @@
 	if(request.getParameter("Score") != null){
 		Score = (String) request.getParameter("Score");
 	}
+	if(request.getParameter("lectureDivide") != null){
+		lectureDivide = (String) request.getParameter("lectureDivide");
+	}
 	
 	if(professorName == null || lectureYear == 0 || semesterDivide == null || evaluationContent == null || Score == null ||
-			evaluationContent.equals("")){
+			 lectureDivide == null || evaluationContent.equals("")){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('입력하지 않은 사항이 있습니다.');");
@@ -58,7 +62,7 @@
 		return;
 	} else{
 		EvaluationDAO evaluationDAO = new EvaluationDAO();
-		int result = evaluationDAO.write(new EvaluationDTO(0, userID, professorName, lectureYear, semesterDivide, evaluationContent, Score, 0));
+		int result = evaluationDAO.write(new EvaluationDTO(0, userID, professorName, lectureYear, semesterDivide, evaluationContent, Score, lectureDivide, 0 ));
 		
 		if(result == -1){
 			PrintWriter script = response.getWriter();
