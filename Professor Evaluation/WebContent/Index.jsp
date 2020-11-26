@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="user.UserDAO" %>
+<%@ page import="evaluation.EvaluationDAO" %>
+<%@ page import="evaluation.EvaluationDTO" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.net.URLEncoder" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +19,29 @@
 </head>
 <body>
 <%
+	request.setCharacterEncoding("UTF-8");
+	String lectureDivide = "전체";
+	String searchType = "최신순";
+	String search = "";
+	int pageNumber = 0;
+	if(request.getParameter("Score") != null){
+		lectureDivide = request.getParameter("lectureDivide");
+	}
+	if(request.getParameter("searchType") != null){
+		searchType = request.getParameter("searchType");
+	}
+	if(request.getParameter("search") != null){
+		search = request.getParameter("search");
+	}
+	if(request.getParameter("pageNumber") != null){
+		try{
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		}catch(Exception e){
+			System.out.println("검색 오류 발생");
+		}
+	}
+	
+
 	String userID = null;
 	if(session.getAttribute("userID") != null) {
 		userID = (String) session.getAttribute("userID");
@@ -71,10 +98,6 @@
      </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="내용을 입력하세요." aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-        </form>
       </div>
     </nav>
         <div class="container">
@@ -82,80 +105,76 @@
         <select name="lectureDivide" class="form-control mx-1 mt-2">
           <option value="전체">전체</option>
           <option value="교수명">교수명</option>
-          <option value="내용">내용</option>
+          <option value="내용"><%if(searchType.equals("내용")) out.println("selected"); %>내용</option>
         </select>
-        <input type="text" name="search" class="form-control mx-1 mt-2" placeholder="내용을 입력하세요.">
+        <input type="text" name="search" class="form-control mx-1 mt-2" value="<%= search %>"placeholder="내용을 입력하세요.">
         <button type="submit" class="btn btn-primary mx-1 mt-2">검색</button>
         <a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal">등록하기</a>
         <a class="btn btn-danger ml-1 mt-2" data-toggle="modal" href="#reportModal">신고</a>
       </form>
+<%
+	ArrayList<EvaluationDTO> evaluationList = new ArrayList<EvaluationDTO>();
+	evaluationList = new EvaluationDAO().getList(lectureDivide, searchType, search, pageNumber);
+	if(evaluationList != null)
+		for(int i =0; i<evaluationList.size(); i++){
+			if(i==5) break;
+			EvaluationDTO evaluation = evaluationList.get(i);
+		
+%>
       <div class="card bg-light mt-3">
         <div class="card-header bg-light">
           <div class="row">
-            <div class="col-8 text-left">우도균&nbsp;<small>(2017년 가을학기)</small></div>
+            <div class="col-8 text-left"><%=evaluation.getProfessorName() %>&nbsp;
+            <small><%=evaluation.getLectureYear() %>	<%=evaluation.getSemesterDivide() %></small></div>
           </div>
         </div>
         <div class="card-body">
-          <p class="card-text">강의가 많이 널널해서, 솔직히 많이 배운 건 없는 것 같지만 학점도 잘 나오고 너무 좋은 것 같습니다.</p>
+          <p class="card-text">
+          <%=evaluation.getEvaluationContent() %>
+          </p>
           <div class="row">
             <div class="col-9 text-left">
-              평가 <span style="color: red;">A</span>
-              <span style="color: green;">(추천: 15★)</span>
+              평가 <span style="color: red;"><%=evaluation.getScore() %></span>
+              <span style="color: green;">(추천 : <%=evaluation.getLikeCount() %>)</span>
             </div>
             <div class="col-3 text-right">
-              <a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=">추천</a>
-              <a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=">삭제</a>
+              <a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=<%=evaluation.getEvaluationID() %>">추천</a>
+              <a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=<%=evaluation.getEvaluationID() %>">삭제</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="card bg-light mt-3">
-        <div class="card-header bg-light">
-          <div class="row">
-            <div class="col-8 text-left">우도균&nbsp;<small>(2017년 가을학기)</small></div>
-          </div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">강의가 많이 널널해서, 솔직히 많이 배운 건 없는 것 같지만 학점도 잘 나오고 너무 좋은 것 같습니다.</p>
-          <div class="row">
-            <div class="col-9 text-left">
-              평가 <span style="color: red;">A</span>
-              <span style="color: green;">(추천: 15★)</span>
-            </div>
-            <div class="col-3 text-right">
-              <a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=">추천</a>
-              <a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=">삭제</a>
-            </div>
-          </div>
-        </div>
-      </div>
-     <div class="card bg-light mt-3">
-        <div class="card-header bg-light">
-          <div class="row">
-            <div class="col-8 text-left">우도균&nbsp;<small>(2017년 가을학기)</small></div>
-          </div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">강의가 많이 널널해서, 솔직히 많이 배운 건 없는 것 같지만 학점도 잘 나오고 너무 좋은 것 같습니다.</p>
-          <div class="row">
-            <div class="col-9 text-left">
-              평가 <span style="color: red;">A</span>
-              <span style="color: green;">(추천: 15★)</span>
-            </div>
-            <div class="col-3 text-right">
-              <a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=">추천</a>
-              <a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=">삭제</a>
-            </div>
-          </div>
-        </div>
-      </div> 
+      <%
+      		}
+      %>
+     
     </div>
     <ul class="pagination justify-content-center mt-3">
       <li class="page-item">
-        <a class="page-link" href="#">이전</a>
+      <%
+      		if(pageNumber <= 0){
+      %>
+        <a class="page-link disabled">이전</a>
+        <%
+      		} else{
+        %>
+        <a class="page-link" href="./Index.jsp?lectureDivide=<%=URLEncoder.encode(lectureDivide, "UTF-8")%>&searchType=<%=URLEncoder.encode(searchType, "UTF-8")%>&search=<%=URLEncoder.encode(search, "UTF-8") %>&pageNumber=<%=pageNumber -1 %>">이전</a>
+        <%
+      		}
+        %>
       </li>
       <li class="page-item">
-        <a class="page-link" href="#">다음</a>
+      <%
+      		if(evaluationList.size() < 6){
+      %>
+        <a class="page-link disabled">다음</a>
+      <%
+      		} else{
+      %>
+      <a class="page-link" href="./Index.jsp?lectureDivide=<%=URLEncoder.encode(lectureDivide, "UTF-8")%>&searchType=<%=URLEncoder.encode(searchType, "UTF-8")%>&search=<%=URLEncoder.encode(search, "UTF-8") %>&pageNumber=<%=pageNumber +1 %>">다음</a>
+      <%
+      		}
+      %>
       </li>
     </ul>
     <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
@@ -202,6 +221,14 @@
                     <option name="2학기">2학기</option>
                     <option name="겨울학기">겨울학기</option>
                   </select>
+                </div>
+                <div class="form-group col-sm-4">
+                <lable>강의 구분</lable>
+                <select name="lectureDivide" class="form-control">
+                	<option name="전공" selected>전공</option>
+                	<option name="교양" selected>교양</option>
+                	<option name="기타" selected>기타</option>
+                </select>
                 </div>
               </div>
               <div class="form-group">
