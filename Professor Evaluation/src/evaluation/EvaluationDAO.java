@@ -27,7 +27,7 @@ public class EvaluationDAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			String SQL = "INSERT INTO EVALUATION VALUES (NULL, ?, ?, ?, ? ,? ,? ,0);";
+			String SQL = "INSERT INTO EVALUATION VALUES (NULL, ?, ?, ?, ? ,? ,? ,?, 0);";
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, evaluationDTO.getUserID());
 			pstmt.setString(2, evaluationDTO.getProfessorName());
@@ -35,6 +35,7 @@ public class EvaluationDAO {
 			pstmt.setString(4, evaluationDTO.getSemesterDivide());
 			pstmt.setString(5, evaluationDTO.getEvaluationContent());
 			pstmt.setString(6, evaluationDTO.getScore());
+			pstmt.setString(7, evaluationDTO.getLectureDivide());
 			return pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -49,9 +50,9 @@ public class EvaluationDAO {
 		return -1;
 	}
 	
-	public ArrayList<EvaluationDTO> getList(String Score, String searchType, String search, int pageNumber){
-		if(Score.equals("전체")) {
-			Score = "";
+	public ArrayList<EvaluationDTO> getList(String LectureDivide, String searchType, String search, int pageNumber){
+		if(LectureDivide.equals("전체")) {
+			LectureDivide = "";
 		}
 		ArrayList<EvaluationDTO> evaluationList = null;
 		PreparedStatement pstmt = null;
@@ -65,7 +66,7 @@ public class EvaluationDAO {
 						+ "LIKE ? ORDER BY likeCount DESC LIMIT " + pageNumber * 5 + ", " + pageNumber * 5 + 6;
 			}
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, "%" + Score + "%");
+			pstmt.setString(1, "%" + LectureDivide + "%");
 			pstmt.setString(2, "%" + search + "%");
 			rs = pstmt.executeQuery();
 			evaluationList = new ArrayList<EvaluationDTO>();
@@ -78,7 +79,8 @@ public class EvaluationDAO {
 						rs.getString(5),
 						rs.getString(6),
 						rs.getString(7),
-						rs.getInt(8)
+						rs.getString(8),
+						rs.getInt(9)
 						);
 				evaluationList.add(evaluation);
 			}

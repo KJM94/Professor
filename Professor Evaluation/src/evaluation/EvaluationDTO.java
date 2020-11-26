@@ -9,7 +9,10 @@ public class EvaluationDTO {
 	String semesterDivide;
 	String evaluationContent;
 	String Score;
+	String lectureDivide;
 	int likeCount;
+	
+	
 	public int getEvaluationID() {
 		return evaluationID;
 	}
@@ -52,6 +55,12 @@ public class EvaluationDTO {
 	public void setScore(String score) {
 		this.Score = score;
 	}
+	public String getLectureDivide() {
+		return lectureDivide;
+	}
+	public void setLectureDivide(String lectureDivide) {
+		this.lectureDivide = lectureDivide;
+	}
 	public int getLikeCount() {
 		return likeCount;
 	}
@@ -60,7 +69,7 @@ public class EvaluationDTO {
 	}
 	
 	public EvaluationDTO(int evaluationID, String userID, String professorName, int lectureYear, String semesterDivide,
-			String evaluationContent, String score, int likeCount) {
+			String evaluationContent, String score, String lectureDivide, int likeCount) {
 		super();
 		this.evaluationID = evaluationID;
 		this.userID = userID;
@@ -70,6 +79,9 @@ public class EvaluationDTO {
 		this.evaluationContent = evaluationContent;
 		this.Score = score;
 		this.likeCount = likeCount;
+		this.lectureDivide = lectureDivide;
 	}
+	
+	
 
 }
