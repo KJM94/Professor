@@ -24,7 +24,7 @@
 	String searchType = "최신순";
 	String search = "";
 	int pageNumber = 0;
-	if(request.getParameter("Score") != null){
+	if(request.getParameter("lectureDivide") != null){
 		lectureDivide = request.getParameter("lectureDivide");
 	}
 	if(request.getParameter("searchType") != null){
@@ -101,11 +101,16 @@
       </div>
     </nav>
         <div class="container">
-      <form method="get" action="./index.jsp" class="form-inline mt-3">
+      <form method="get" action="./Index.jsp" class="form-inline mt-3">
         <select name="lectureDivide" class="form-control mx-1 mt-2">
           <option value="전체">전체</option>
-          <option value="교수명">교수명</option>
-          <option value="내용"><%if(searchType.equals("내용")) out.println("selected"); %>내용</option>
+          <option value="메카"<%if(lectureDivide.equals("메카")) out.println("selected"); %>>메카</option>
+          <option value="기계"<%if(lectureDivide.equals("기계")) out.println("selected"); %>>기계</option>
+          <option value="전기"<%if(lectureDivide.equals("전기")) out.println("selected"); %>>전기</option>
+        </select>
+        <select name="searchType" class="form-control mx-1 mt-2">
+        	<option value="최신순">최신순</option>
+        	<option value="추천순" <%if(searchType.equals("추천순")) out.println("selected"); %>>추천순</option>
         </select>
         <input type="text" name="search" class="form-control mx-1 mt-2" value="<%= search %>"placeholder="내용을 입력하세요.">
         <button type="submit" class="btn btn-primary mx-1 mt-2">검색</button>
@@ -125,7 +130,7 @@
         <div class="card-header bg-light">
           <div class="row">
             <div class="col-8 text-left"><%=evaluation.getProfessorName() %>&nbsp;
-            <small><%=evaluation.getLectureYear() %>	<%=evaluation.getSemesterDivide() %></small></div>
+            <small><%=evaluation.getLectureYear() %>	<%=evaluation.getSemesterDivide() %>	<span style="color: blue;"><%=evaluation.getLectureDivide() %></span></div></small>
           </div>
         </div>
         <div class="card-body">
@@ -223,11 +228,11 @@
                   </select>
                 </div>
                 <div class="form-group col-sm-4">
-                <lable>강의 구분</lable>
+                <lable>학과 구분</lable>
                 <select name="lectureDivide" class="form-control">
-                	<option name="전공" selected>전공</option>
-                	<option name="교양" selected>교양</option>
-                	<option name="기타" selected>기타</option>
+                	<option name="메카" selected>메카</option>
+                	<option name="기계">기계</option>
+                	<option name="전기">전기</option>
                 </select>
                 </div>
               </div>
