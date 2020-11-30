@@ -97,5 +97,68 @@ public class EvaluationDAO {
 		}
 		return evaluationList;
 	}
+	
+	public int like(String evaluationID) {
+		PreparedStatement pstmt = null;
+		try {
+			String SQL = "UPDATE EVALUATION SET likeCount = likeCount + 1 WHERE evaluationID = ?";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, Integer.parseInt(evaluationID));
+			return pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return -1;
+	}
+	
+	public int delete(String evaluationID) {
+		PreparedStatement pstmt = null;
+		try {
+			String SQL = "DELETE FROM EVALUATION WHERE evaluationID = ?";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, Integer.parseInt(evaluationID));
+			return pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return -1;
+	}
+	
+	public String getUserID(String evaluationID) {
+		PreparedStatement pstmt = null;
+		try {
+			String SQL = "SELECT userID FROM EVALUATION WHERE evaluationID = ?";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, Integer.parseInt(evaluationID));
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				return rs.getString(1);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 
 }
