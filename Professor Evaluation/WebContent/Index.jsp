@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="./css/custom.css">
 </head>
 <body>
-<%
+<%!
 	request.setCharacterEncoding("UTF-8");
 	String lectureDivide = "전체";
 	String searchType = "최신순";
