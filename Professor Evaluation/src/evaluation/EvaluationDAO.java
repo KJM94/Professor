@@ -29,13 +29,13 @@ public class EvaluationDAO {
 		try {
 			String SQL = "INSERT INTO EVALUATION VALUES (NULL, ?, ?, ?, ? ,? ,? ,?, 0);";
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, evaluationDTO.getUserID());
-			pstmt.setString(2, evaluationDTO.getProfessorName());
+			pstmt.setString(1, evaluationDTO.getUserID().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>"));
+			pstmt.setString(2, evaluationDTO.getProfessorName().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>"));
 			pstmt.setInt(3, evaluationDTO.getLectureYear());
-			pstmt.setString(4, evaluationDTO.getSemesterDivide());
-			pstmt.setString(5, evaluationDTO.getEvaluationContent());
-			pstmt.setString(6, evaluationDTO.getScore());
-			pstmt.setString(7, evaluationDTO.getLectureDivide());
+			pstmt.setString(4, evaluationDTO.getSemesterDivide().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>"));
+			pstmt.setString(5, evaluationDTO.getEvaluationContent().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>"));
+			pstmt.setString(6, evaluationDTO.getScore().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>"));
+			pstmt.setString(7, evaluationDTO.getLectureDivide().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>"));
 			return pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
