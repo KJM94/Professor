@@ -62,7 +62,7 @@
 		return;
 	} else{
 		EvaluationDAO evaluationDAO = new EvaluationDAO();
-		int result = evaluationDAO.write(new EvaluationDTO(0, userID, professorName, lectureYear, semesterDivide, evaluationContent, Score, lectureDivide, 0 ));
+		int result = evaluationDAO.write(new EvaluationDTO(0, userID, professorName, lectureYear, semesterDivide, evaluationContent, Score, lectureDivide ));
 		
 		if(result == -1){
 			PrintWriter script = response.getWriter();
