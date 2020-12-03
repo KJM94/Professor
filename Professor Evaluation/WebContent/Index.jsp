@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="./css/custom.css">
 </head>
 <body>
-<%!
+<%
 	request.setCharacterEncoding("UTF-8");
 	String lectureDivide = "전체";
 	String searchType = "최신순";
@@ -68,18 +68,16 @@
 	}
 %>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-      <a class="navbar-brand" href="Index.jsp">교수평가</a>
+	<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <a class="navbar-brand text-white" href="Index.jsp">교수평가</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="Index.jsp">메인</a>
-          </li>
+          
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
+            <a class="nav-link dropdown-toggle text-white btn" id="dropdown" data-toggle="dropdown">
             	  회원 관리
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdown">
@@ -102,19 +100,9 @@
     </nav>
         <div class="container">
       <form method="get" action="./Index.jsp" class="form-inline mt-3">
-        <select name="lectureDivide" class="form-control mx-1 mt-2">
-          <option value="전체">전체</option>
-          <option value="메카"<%if(lectureDivide.equals("메카")) out.println("selected"); %>>메카</option>
-          <option value="기계"<%if(lectureDivide.equals("기계")) out.println("selected"); %>>기계</option>
-          <option value="전기"<%if(lectureDivide.equals("전기")) out.println("selected"); %>>전기</option>
-        </select>
-        <select name="searchType" class="form-control mx-1 mt-2">
-        	<option value="최신순">최신순</option>
-        	<option value="추천순" <%if(searchType.equals("추천순")) out.println("selected"); %>>추천순</option>
-        </select>
         <input type="text" name="search" class="form-control mx-1 mt-2" value="<%= search %>"placeholder="내용을 입력하세요.">
-        <button type="submit" class="btn btn-primary mx-1 mt-2">검색</button>
-        <a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal">등록하기</a>
+        <button type="submit" class="btn btn-success mx-1 mt-2">검색</button>
+        <a class="btn btn-success mx-1 mt-2" data-toggle="modal" href="#registerModal">등록하기</a>
         <a class="btn btn-danger ml-1 mt-2" data-toggle="modal" href="#reportModal">신고</a>
       </form>
 <%
@@ -140,10 +128,10 @@
           <div class="row">
             <div class="col-9 text-left">
               평가 <span style="color: red;"><%=evaluation.getScore() %></span>
-              <span style="color: green;">(추천 : <%=evaluation.getLikeCount() %>)</span>
+              
             </div>
             <div class="col-3 text-right">
-              <a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=<%=evaluation.getEvaluationID() %>">추천</a>
+              
               <a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=<%=evaluation.getEvaluationID() %>">삭제</a>
             </div>
           </div>
