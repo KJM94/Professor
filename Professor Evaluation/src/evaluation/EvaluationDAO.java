@@ -27,7 +27,7 @@ public class EvaluationDAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			String SQL = "INSERT INTO EVALUATION VALUES (NULL, ?, ?, ?, ? ,? ,? ,?, 0);";
+			String SQL = "INSERT INTO EVALUATION VALUES (NULL, ?, ?, ?, ? ,? ,? ,?);";
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, evaluationDTO.getUserID().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>"));
 			pstmt.setString(2, evaluationDTO.getProfessorName().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>"));
@@ -79,8 +79,7 @@ public class EvaluationDAO {
 						rs.getString(5),
 						rs.getString(6),
 						rs.getString(7),
-						rs.getString(8),
-						rs.getInt(9)
+						rs.getString(8)
 						);
 				evaluationList.add(evaluation);
 			}
@@ -98,25 +97,6 @@ public class EvaluationDAO {
 		return evaluationList;
 	}
 	
-	public int like(String evaluationID) {
-		PreparedStatement pstmt = null;
-		try {
-			String SQL = "UPDATE EVALUATION SET likeCount = likeCount + 1 WHERE evaluationID = ?";
-			pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, Integer.parseInt(evaluationID));
-			return pstmt.executeUpdate();
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn != null) conn.close();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return -1;
-	}
 	
 	public int delete(String evaluationID) {
 		PreparedStatement pstmt = null;
