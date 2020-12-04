@@ -31,7 +31,7 @@
 	   PrintWriter script = response.getWriter();
 	   script.println("<script>");
 	   script.println("alert('인증에 성공했습니다.');");
-	   script.println("location.href = 'index.jsp'");
+	   script.println("location.href = 'Index.jsp'");
 	   script.println("</script>");
 	   script.close();
 	   return;
@@ -39,7 +39,7 @@
 	   PrintWriter script = response.getWriter();
 	   script.println("<script>");
 	   script.println("alert('유효하지 않은 코드입니다.');");
-	   script.println("location.href = 'index.jsp'");
+	   script.println("location.href = 'Index.jsp'");
 	   script.println("</script>");
 	   script.close();
 	   
