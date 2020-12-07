@@ -13,9 +13,9 @@
 - 추천 및 삭제
 - 기본 크로스 사이트 스크립팅 방어 (꺾쇠 치환)
 
--
+##
 <img src="https://user-images.githubusercontent.com/59479116/101315875-c66db980-389e-11eb-9b69-4215537a9f49.PNG">
--
+
 <img src="https://user-images.githubusercontent.com/59479116/101315906-d2597b80-389e-11eb-8b58-1e738a7e7a3b.PNG">
 
 <img src="https://user-images.githubusercontent.com/59479116/101315911-d4bbd580-389e-11eb-9d48-7208699b87e1.PNG">
