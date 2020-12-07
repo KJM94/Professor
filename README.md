@@ -60,7 +60,7 @@
 - 로그아웃 후 권한이 없어 로그인 페이지로 이동
 <img src="https://user-images.githubusercontent.com/59479116/101316055-1cdaf800-389f-11eb-86ef-a6b62cb2131c.PNG">
 
-- 스크립트 꺾쇠 
+- 스크립트 꺾쇠 치환
 <img src="https://user-images.githubusercontent.com/59479116/101316073-249a9c80-389f-11eb-8691-39b139b08c01.PNG">
 
 
