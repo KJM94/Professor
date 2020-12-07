@@ -54,13 +54,13 @@
 - 페이징 2
 <img src="https://user-images.githubusercontent.com/59479116/101316041-1482bd00-389f-11eb-83b8-a11ffd0af575.PNG">
 
-
+- 검색
 <img src="https://user-images.githubusercontent.com/59479116/101316051-1a789e00-389f-11eb-9c3e-78811c2a502e.PNG">
 
-
+- 로그아웃 후 권한이 없어 로그인 페이지로 이동
 <img src="https://user-images.githubusercontent.com/59479116/101316055-1cdaf800-389f-11eb-86ef-a6b62cb2131c.PNG">
 
-
+- 스크립트 꺾쇠 
 <img src="https://user-images.githubusercontent.com/59479116/101316073-249a9c80-389f-11eb-8691-39b139b08c01.PNG">
 
 
