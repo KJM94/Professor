@@ -18,22 +18,22 @@
 - 메인
 <img src="https://user-images.githubusercontent.com/59479116/101315875-c66db980-389e-11eb-9b69-4215537a9f49.PNG">
 
-
+- 로그인
 <img src="https://user-images.githubusercontent.com/59479116/101315906-d2597b80-389e-11eb-8b58-1e738a7e7a3b.PNG">
 
-
+- 회원가입
 <img src="https://user-images.githubusercontent.com/59479116/101315911-d4bbd580-389e-11eb-9d48-7208699b87e1.PNG">
 
-
+- 이메일 인증
 <img src="https://user-images.githubusercontent.com/59479116/101315945-ea30ff80-389e-11eb-961f-6059c1051687.PNG">
 
-
+- 이메일 인증 실패
 <img src="https://user-images.githubusercontent.com/59479116/101315949-ebfac300-389e-11eb-867f-bff449caf702.PNG">
 
-
+- 목록
 <img src="https://user-images.githubusercontent.com/59479116/101315970-f452fe00-389e-11eb-8932-b2ac05d41018.PNG">
 
-
+- 확인 
 <img src="https://user-images.githubusercontent.com/59479116/101315994-fcab3900-389e-11eb-945e-cacf4a5d0926.PNG">
 
 
