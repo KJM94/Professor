@@ -13,7 +13,9 @@
 - 추천 및 삭제
 - 기본 크로스 사이트 스크립팅 방어 (꺾쇠 치환)
 
-##
+## 구현화면
+
+- 메인
 <img src="https://user-images.githubusercontent.com/59479116/101315875-c66db980-389e-11eb-9b69-4215537a9f49.PNG">
 
 
