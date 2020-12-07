@@ -33,25 +33,25 @@
 - 목록
 <img src="https://user-images.githubusercontent.com/59479116/101315970-f452fe00-389e-11eb-8932-b2ac05d41018.PNG">
 
-- 확인 
+- 확인 메일
 <img src="https://user-images.githubusercontent.com/59479116/101315994-fcab3900-389e-11eb-945e-cacf4a5d0926.PNG">
 
-
+- 평가 등록
 <img src="https://user-images.githubusercontent.com/59479116/101316010-046add80-389f-11eb-890d-0f3f0fa45f1d.PNG">
 
-
+- 작성 후 목록
 <img src="https://user-images.githubusercontent.com/59479116/101316014-0765ce00-389f-11eb-949a-fc32b11b06f5.PNG">
 
-
+- 신고 기능
 <img src="https://user-images.githubusercontent.com/59479116/101316021-09c82800-389f-11eb-906e-cf10048655d9.PNG">
 
-
+- 신고내용 메일 접수
 <img src="https://user-images.githubusercontent.com/59479116/101316028-0b91eb80-389f-11eb-9377-32fe6676ac72.PNG">
 
-
+- 페이징 1
 <img src="https://user-images.githubusercontent.com/59479116/101316038-12b8f980-389f-11eb-8b7b-e3a07673ae82.PNG">
 
-
+- 페이징 2
 <img src="https://user-images.githubusercontent.com/59479116/101316041-1482bd00-389f-11eb-83b8-a11ffd0af575.PNG">
 
 
