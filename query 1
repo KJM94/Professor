@@ -24,11 +24,5 @@ create table user (
 );
 */
 
-/*
-create table likey(
-	userID varchar(50), #작성자아이디
-    evaluationID int, #평가번호
-    userIP varchar(50) #작성자 아이피
-);
-*/
+
 
